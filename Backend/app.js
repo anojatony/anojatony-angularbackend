@@ -99,7 +99,7 @@ app.post('/addbook',verifyToken,upload.single('image'),function (req,res){
    author:req.body.author,
    genre:req.body.genre,
    content:req.body.content,
-   image: 'http://localhost:8000/images/'+ req.file.filename
+   image: '/api/images/'+ req.file.filename
 }
 var book = Bookdata(item);
 book.save();
@@ -126,7 +126,7 @@ app.put('/updatebook',upload.single('image'),(req,res)=>{
   author = req.body.author,
   genre = req.body.genre,
   content = req.body.content,
-  image = 'http://localhost:8000/images/'+ req.file.filename
+  image = '/api/images/'+ req.file.filename
   
  Bookdata.findByIdAndUpdate({"_id":id},
                               {$set:{"title":title,
@@ -172,7 +172,7 @@ app.get('/authors',function(req,res){
  var item={
  author:req.body.author,
  content:req.body.content,
- image: 'http://localhost:8000/images/'+ req.file.filename
+ image: '/api/images/'+ req.file.filename
 }
 var author = Authordata(item);
 author.save();
@@ -197,7 +197,7 @@ app.put('/updateauthor',upload.single('image'),(req,res)=>{
   id=req.body.id,
   author = req.body.author,
   content = req.body.content,
-  image = 'http://localhost:8000/images/'+ req.file.filename
+  image = '/api/images/'+ req.file.filename
   
  Authordata.findByIdAndUpdate({"_id":id},
                               {$set:{
